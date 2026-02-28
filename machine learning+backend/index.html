@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Universitaire</title>
+</head>
+<body>
+
+<h2>🤖 Chatbot Universitaire</h2>
+
+<input type="text" id="question" placeholder="Posez votre question..." size="50">
+<button onclick="sendQuestion()">Envoyer</button>
+
+<p id="response"></p>
+
+<script>
+function sendQuestion() {
+    let question = document.getElementById("question").value;
+
+    fetch("http://127.0.0.1:5000/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: question })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("response").innerHTML =
+            "<b>Catégorie:</b> " + data.category +
+            "<br><b>Réponse:</b> " + data.response;
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - UniHelp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h2>UniHelp</h2>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="contact-page">
+  <h1>Contact Universitaire</h1>
+
+  <div class="buttons">
+    <button onclick="showStage()">Adresse des stages</button>
+    <button onclick="showProf()">Mail des professeurs</button>
+    <button onclick="showAssist()">Mail assistant / directeurs</button>
+  </div>
+
+  <div id="infoDisplay"></div>
+</section>
+
+<script>
+function showStage() {
+  document.getElementById('infoDisplay').innerHTML = `
+    <p>Adresse Stage 1: stage@unitech.com</p>
+    <p>Adresse Stage 2: internship@unitech.com</p>
+  `;
+}
+
+function showProf() {
+  document.getElementById('infoDisplay').innerHTML = `
+    <p>Professeur Math: mathprof@univ.com</p>
+    <p>Professeur Info: infoprof@univ.com</p>
+    <p>Professeur Physique: physprof@univ.com</p>
+  `;
+}
+
+function showAssist() {
+  document.getElementById('infoDisplay').innerHTML = `
+    <p>Assistante Sara: sara@univ.com</p>
+    <p>Directeur: director@univ.com</p>
+  `;
+}
+</script>
+
+</body>
+</html>

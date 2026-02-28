@@ -1,0 +1,147 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 9.6.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE assistantIA;
+ERROR 1007 (HY000): Can't create database 'assistantia'; database exists
+mysql> USE assistantIA;
+Database changed
+mysql> CREATE TABLE etudiants (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nom VARCHAR(50) NOT NULL,
+    ->     prenom VARCHAR(50) NOT NULL,
+    ->     email VARCHAR(100) UNIQUE NOT NULL,
+    ->     filiere VARCHAR(50),
+    ->     annee INT
+    -> );
+ERROR 1050 (42S01): Table 'etudiants' already exists
+mysql> CREATE TABLE faq (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     question TEXT NOT NULL,
+    ->     reponse TEXT NOT NULL,
+    ->     date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.208 sec)
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_assistantia |
++-----------------------+
+| etudiants             |
+| faq                   |
++-----------------------+
+2 rows in set (0.096 sec)
+
+mysql> CREATE TABLE documents (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     titre VARCHAR(100) NOT NULL,
+    ->     type_document VARCHAR(50),
+    ->     chemin_fichier VARCHAR(255),
+    ->     date_ajout DATETIME DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.246 sec)
+
+mysql> CREATE TABLE emails (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     etudiant_id INT,
+    ->     type_email VARCHAR(50),
+    ->     contenu TEXT,
+    ->     date_envoi DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     FOREIGN KEY (etudiant_id) REFERENCES etudiants(id)
+    -> );
+Query OK, 0 rows affected (0.309 sec)
+
+mysql> INSERT INTO etudiants (nom, prenom, email, filiere, annee)
+    -> VALUES ('بن عبد الله', 'توفّيق', 'taoufik.benabdallah@iit.ens.tn', 'الإعلامية', 3);
+Query OK, 1 row affected (0.062 sec)
+
+mysql>
+mysql> INSERT INTO faq (question, reponse)
+    -> VALUES ('كيفاش نتحصّل على شهادة التسجيل؟', 'لازم تعمّل طلب عبر الفورم الإلكتروني في موقع المعهد.');
+Query OK, 1 row affected (0.050 sec)
+
+mysql>
+mysql> INSERT INTO documents (titre, type_document, chemin_fichier)
+    -> VALUES ('النظام الداخلي', 'PDF', '/documents/reglement.pdf');
+Query OK, 1 row affected (0.054 sec)
+
+mysql>
+mysql> INSERT INTO emails (etudiant_id, type_email, contenu)
+    -> VALUES (1, 'attestation', 'سلام توفّيق، الشهادة متاعك جاهزة.');
+Query OK, 1 row affected (0.090 sec)
+
+mysql> SELECT * FROM etudiants;
++----+----------------------+--------------+--------------------------------+--------------------+-------+
+| id | nom                  | prenom       | email| filiere            | annee |
++----+----------------------+--------------+--------------------------------+--------------------+-------+
+|  1 | بن عبد الله          | توفّيق       | taoufik.benabdallah@iit.ens.tn | الإعلامية          |     3 |
++----+----------------------+--------------+--------------------------------+--------------------+-------+
+1 row in set (0.005 sec)
+
+mysql> SELECT * FROM faq;
++----+------------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------------------+
+| id | question                                                   | reponse            | date_creation       |
++----+------------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------------------+
+|  1 | كيفاش نتحصّل على شهادة التسجيل؟                            | لازم تعمّل طلب عبر الفورم الإلكتروني في موقع المعهد.          | 2026-02-27 22:19:58 |
++----+------------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------------------+
+1 row in set (0.005 sec)
+
+mysql> SELECT * FROM documents;
++----+-----------------------------+---------------+--------------------------+---------------------+
+| id | titre                       | type_document | chemin_fichier  | date_ajout          |
++----+-----------------------------+---------------+--------------------------+---------------------+
+|  1 | النظام الداخلي              | PDF           | /documents/reglement.pdf | 2026-02-27 22:19:58 |
++----+-----------------------------+---------------+--------------------------+---------------------+
+1 row in set (0.005 sec)
+
+mysql> SELECT * FROM emails;
++----+-------------+-------------+---------------------------------------------------------------+---------------------+
+| id | etudiant_id | type_email  | contenu                     | date_envoi          |
++----+-------------+-------------+---------------------------------------------------------------+---------------------+
+|  1 |           1 | attestation | سلام توفّيق، الشهادة متاعك جاهزة.                    | 2026-02-27 22:20:22 |
++----+-------------+-------------+---------------------------------------------------------------+---------------------+
+1 row in set (0.004 sec)
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_assistantia |
++-----------------------+
+| documents             |
+| emails                |
+| etudiants             |
+| faq                   |
++-----------------------+
+4 rows in set (0.020 sec)
+
+mysql> CREATE DATABASE assistant_ai;
+Query OK, 1 row affected (0.207 sec)
+
+mysql>
+mysql> USE assistant_ai;
+Database changed
+mysql>
+mysql> CREATE TABLE questions (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     question TEXT,
+    ->     reponse TEXT
+    -> );
+Query OK, 0 rows affected (0.309 sec)
+
+mysql> SHOW TABLES;
++------------------------+
+| Tables_in_assistant_ai |
++------------------------+
+| questions              |
++------------------------+
+1 row in set (0.048 sec)
+
+mysql> :\Users\ASUS\Desktop\UniHelpC:\Users\ASUS\Desktop\UniHelp

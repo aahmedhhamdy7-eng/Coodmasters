@@ -1,0 +1,319 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e2f, #6a11cb);
+  color: white;
+}
+
+/* =========================
+   LOGIN
+========================= */
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: white;
+  color: black;
+  padding: 40px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  background: black;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================
+   HERO (HOME)
+========================= */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-text h1,
+.hero-text p {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.hero-text h1 {
+  font-size: 4em;
+  font-weight: 900;
+  animation-delay: 0.3s;
+}
+
+.hero-text .highlight {
+  color: #ffdd00;
+}
+
+.hero-text p {
+  font-size: 1.8em;
+  font-weight: 600;
+  animation-delay: 0.8s;
+}
+
+/* =========================
+   PAGE CONTENT
+========================= */
+.page {
+  padding: 40px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: white;
+  color: black;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* =========================
+   BUTTONS / INPUT
+========================= */
+button {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+button:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+button:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+button:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* =========================
+   ABOUT / QUESTIONS
+========================= */
+#qaSection {
+  margin-top: 40px;
+  background: #ffffff20;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+#userQuestion {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+#sendBtn {
+  padding: 10px 20px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#response {
+  margin-top: 20px;
+  background: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-page {
+  display: flex;
+  flex-direction: column;       /* empile verticalement */
+  justify-content: center;      /* centre verticalement */
+  align-items: center;          /* centre horizontalement */
+  text-align: center;
+  gap: 20px;
+  min-height: 100vh;            /* prend toute la hauteur de la page */
+  padding: 40px;
+}
+
+.contact-page h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.contact-page .buttons {
+  display: flex;
+  flex-direction: column;       /* empile les boutons */
+  gap: 15px;
+  align-items: center;
+}
+
+.contact-page .buttons button {
+  width: 200px;                 /* largeur uniforme */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.contact-page .buttons button:nth-child(1) { animation-delay: 0.5s; }
+.contact-page .buttons button:nth-child(2) { animation-delay: 0.8s; }
+.contact-page .buttons button:nth-child(3) { animation-delay: 1.1s; }
+
+.contact-page .buttons button:hover {
+  background: #ffdd00;
+  color: #1e1e2f;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+#infoDisplay {
+  margin-top: 20px;
+  background: white;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Animation fade-in + slide */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#infoDisplay {
+  margin-top: 20px;
+  background: white;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* =========================
+   ANIMATION FADE-IN + SLIDE
+========================= */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

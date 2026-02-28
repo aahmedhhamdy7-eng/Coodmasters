@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - UniHelp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <h2>UniHelp</h2>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="service.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page">
+  <h1>À propos de UniHelp</h1>
+  <p>UniHelp est votre assistant IA pour tous les services universitaires : stages, professeurs, contacts administratifs et nouveautés.</p>
+
+  <!-- Section questions -->
+  <div id="qaSection">
+    <h2>Posez votre question</h2>
+    <input type="text" id="userQuestion" placeholder="Écrivez votre question ici...">
+    <button id="sendBtn">Envoyer</button>
+    <div id="response"></div>
+  </div>
+</section>
+
+<script>
+  // Action du bouton envoyer
+  document.getElementById('sendBtn').addEventListener('click', function() {
+    const question = document.getElementById('userQuestion').value.trim();
+    if(question === '') {
+      alert('Veuillez écrire une question avant d’envoyer.');
+      return;
+    }
+    // Réponse formelle
+    document.getElementById('response').innerText = "Merci, j’ai bien reçu votre question. Je vous répondrai dans 3 jours environ.";
+    document.getElementById('userQuestion').value = '';
+  });
+</script>
+
+</body>
+</html>
